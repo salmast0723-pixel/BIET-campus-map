@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BIET Campus Navigation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #004080;
+    padding: 20px;
+    text-align: center;
+}
+header h1 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover { color: #00bcd4; }
+
+/* CONTENT */
+.content {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* NAVIGATION SECTION */
+.navigator-section {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #eef4ff, #ffffff);
+    text-align: center;
+}
+
+.navigator-section h2 {
+    color: #004080;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.navigator-section p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.navigator-box {
+    background: #ffffff;
+    padding: 30px;
+    max-width: 650px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.navigator-box select {
+    width: 260px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.navigator-box button {
+    padding: 12px 30px;
+    background: #004080;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.navigator-box button:hover { background: #0066cc; }
+
+/* OUTPUT */
+#directions {
+    margin-top: 20px;
+    padding: 18px;
+    background: #eef6ff;
+    border-left: 6px solid #004080;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+/* FOOTER */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .navigator-box select,
+    .navigator-box button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Bapuji Institute of Engineering and Technology</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Campus</a>
+        <a href="#">Navigation</a>
+    </nav>
+</header>
+
+<section class="content">
+    <h2>Campus Navigation System</h2>
+    <p>Select your current location and destination</p>
+</section>
+
+<section class="navigator-section">
+    <h2>You Are Here → Go There</h2>
+    <p>Simple walking directions inside campus</p>
+
+    <div class="navigator-box">
+        <select id="from">
+            <option value="">Select Current Location</option>
+            <option value="gate">Main Gate</option>
+            <option value="admin">Admin Block</option>
+            <option value="is">IS Block</option>
+            <option value="biotech">Biotech Block</option>
+            <option value="csbs">CSBS Block</option>
+        </select>
+
+        <select id="to">
+            <option value="">Select Destination</option>
+            <option value="admin">Admin Block</option>
+            <option value="is">IS Block</option>
+            <option value="biotech">Biotech Block</option>
+            <option value="csbs">CSBS Block</option>
+        </select>
+
+        <br>
+        <button onclick="showDirections()">Show Directions</button>
+
+        <div id="directions"></div>
+    </div>
+</section>
+
+<footer>
+    <p>© BIET Campus Navigation</p>
+</footer>
+
+<script>
+function showDirections() {
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    const output = document.getElementById("directions");
+
+    if (from === "" || to === "") {
+        output.innerHTML = "<b>Please select both locations.</b>";
+        return;
+    }
+
+    if (from === to) {
+        output.innerHTML = "<b>You are already at the destination.</b>";
+        return;
+    }
+
+    let directions = {
+        "gate-admin":
+            "Enter through the main gate and walk straight for a short distance. You will see the <b>Admin Block</b> in front of you.",
+
+        "gate-is":
+            "From the main gate, walk straight and then turn <b>right</b>. The <b>IS Block</b> will be on your right side.",
+
+        "gate-biotech":
+            "From the main gate, go straight and then turn <b>left</b>. Continue walking to reach the <b>Biotech Block</b>.",
+
+        "gate-csbs":
+            "From the main gate, walk straight, pass the Admin Block, then turn <b>right</b> to reach the <b>CSBS Block</b>.",
+
+        "admin-is":
+            "From the Admin Block, turn <b>right</b> and walk straight. You will reach the <b>IS Block</b>.",
+
+        "admin-biotech":
+            "From the Admin Block, turn <b>left</b> and walk straight to reach the <b>Biotech Block</b>.",
+
+        "admin-csbs":
+            "From the Admin Block, go straight and then turn <b>right</b>. The <b>CSBS Block</b> is ahead.",
+
+        "is-biotech":
+            "From the IS Block, walk straight and turn <b>left</b>. You will find the <b>Biotech Block</b>.",
+
+        "is-csbs":
+            "From the IS Block, go straight and turn <b>right</b> to reach the <b>CSBS Block</b>.",
+
+        "biotech-csbs":
+            "From the Biotech Block, walk straight and turn <b>right</b>. You will reach the <b>CSBS Block</b>."
+    };
+
+    let key = from + "-" + to;
+    let reverseKey = to + "-" + from;
+
+    if (directions[key]) {
+        output.innerHTML = directions[key];
+    } else if (directions[reverseKey]) {
+        output.innerHTML = "<b>Reverse Path:</b> " + directions[reverseKey];
+    } else {
+        output.innerHTML = "<b>Directions not available for this route.</b>";
+    }
+}
+</script>
+
+</body>
+</html>

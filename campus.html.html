@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BIET Campus Map – Searchable Rooms</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+header {
+    background-color: #004080;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover { color: #00bcd4; }
+
+.content {
+    padding: 30px;
+    text-align: center;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+#searchInput {
+    padding: 8px;
+    width: 320px;
+    font-size: 15px;
+}
+
+.info-section {
+    max-width: 1300px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.section-subtitle {
+    margin-top: 45px;
+    font-size: 22px;
+    color: #004080;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: top;
+}
+th {
+    background-color: #8c4775;
+    color: white;
+}
+
+.details-list li {
+    margin-bottom: 5px;
+}
+.highlight {
+    background-color: yellow;
+}
+
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Bapuji Institute of Engineering and Technology</h1>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="campus-map.html">Campus Map</a>
+</nav>
+</header>
+
+<div class="content">
+<h2>Campus Map – Search Rooms</h2>
+<div class="search-container">
+<input type="text" id="searchInput" placeholder="Search room / lab / hall..." onkeyup="searchRooms()">
+</div>
+</div>
+
+<section class="info-section">
+
+<!-- ================= ADMIN BLOCK ================= -->
+<div class="section-subtitle">Admin Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+<tr><td>Ground Floor</td><td><ul class="details-list">
+<li>A008 – Computer Center & Programming Lab</li>
+<li>A009 – Class Room</li>
+<li>A010 – Technical Staff Room</li>
+<li>A011 – P.C.B Lab</li>
+<li>A012 – HOD Chamber</li>
+<li>A013 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>A127 – Processor / Controller Lab</li>
+<li>A128 – Internet Centre</li>
+<li>A129-A – Analog Lab</li>
+<li>A129-B – Digital Lab</li>
+<li>A130 – Communication Lab</li>
+<li>A131 – HOD Room</li>
+<li>A132 – Faculty Room</li>
+<li>A133 – Class Room</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>A249 – Class Room</li>
+<li>A250 – Faculty Room / Department Library</li>
+<li>A251 – Class Room</li>
+<li>A252 – Class Room</li>
+<li>A254 – Class Room</li>
+<li>A255 – Faculty Room</li>
+<li>A256 – Faculty Room</li>
+</ul></td></tr>
+
+<tr><td>Third Floor</td><td><ul class="details-list">
+<li>A349 – Class Room</li>
+<li>A350 – Faculty Room</li>
+<li>A351 – Networking / Research Lab</li>
+<li>A352 – Design Automation Lab</li>
+<li>A353 – UPS Room</li>
+<li>A354 – LCS Class Room</li>
+<li>A355 – Faculty Room</li>
+</ul></td></tr>
+</table>
+
+<!-- ================= LIBRARY ================= -->
+<div class="section-subtitle">Library</div>
+<ul class="details-list">
+<li>Textbooks for various subjects</li>
+<li>Reference books</li>
+<li>Journals and magazines</li>
+<li>Newspapers</li>
+<li>Reading and study area</li>
+<li>Issue and return counter</li>
+<li>Computer systems for online access</li>
+</ul>
+
+<!-- ================= BIOTECH / IS / CSBS ================= -->
+<div class="section-subtitle">Biotechnology / IS / CSBS Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+
+<tr><td>Ground Floor</td><td><ul class="details-list">
+<li>B002 – B.G.L Swamy Seminar Hall</li>
+<li>B003 – J.C Bose Hall</li>
+<li>B004 – Cell Biology & Molecular Biology Lab</li>
+<li>B005 – Lab A & B</li>
+<li>B006 – Department of AI & ML</li>
+<li>B007 – Darwin Hall / Lecture Hall / R&D / Skill Lab</li>
+<li>B008 – Room</li>
+<li>B009 – AI&ML Lab / Java Lab</li>
+<li>B010 – C.N.R Rao Hall / Lecture Hall</li>
+<li>B011 – Staff Room</li>
+<li>B012 – HOD Biotechnology</li>
+</ul></td></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>B113 – Drawing Hall</li>
+<li>B114 – Lecture Hall</li>
+<li>B115 – Biomedical Engg Lab 4</li>
+<li>B116 – Biomedical Engg Lab 3</li>
+<li>B116A – Staff Room</li>
+<li>B117 – Biomedical Engg Lab 2</li>
+<li>B117A – Seminar Hall</li>
+<li>B118 – Biomedical Engg Lab 1</li>
+<li>B119 – Lecture Hall</li>
+<li>B120 – Staff Room</li>
+<li>B121 – HOD Room</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>B117 – ISE Lab 1</li>
+<li>B222A – Lecture Hall 2</li>
+<li>B222B – Lecture Hall 3</li>
+<li>B223 – Lecture Hall 4</li>
+<li>B224 – ISE Lab 2</li>
+<li>B225 – Seminar Hall</li>
+<li>B227 – Staff Room</li>
+<li>B228 – Microprocessor / Research Lab</li>
+<li>B229 – Lecture Hall</li>
+<li>B230 – Staff Room</li>
+<li>B231 – HOD Room</li>
+<li>B232 – Staff Room</li>
+</ul></td></tr>
+</table>
+
+<!-- ================= TEXTILE BLOCK ================= -->
+<div class="section-subtitle">Textile Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>T101 – Textile HOD Room</li>
+<li>T102 – Staff Room</li>
+<li>T103 – Garment Lab</li>
+<li>T104 – Weaving Lab</li>
+<li>T105 – C.P Lab</li>
+<li>T106 – Silk Lab</li>
+<li>T107 – Spinning Lab</li>
+<li>T109 – Chemistry Lab</li>
+<li>T110 – Environmental Lab</li>
+<li>T111 – Staff Room</li>
+<li>T112 – GIM</li>
+<li>T113 – Sports Room</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>T301 – Class Room</li>
+<li>T302 – Class Room</li>
+<li>T303 – Class Room</li>
+<li>T304 – Staff Room</li>
+<li>T305 – Class Room</li>
+<li>T306 – Class Room</li>
+<li>T307 – Class Room</li>
+</ul></td></tr>
+
+<tr><td>Third Floor</td><td><ul class="details-list">
+<li>T201 – Staff Room</li>
+<li>T202 – CAD / CAM Lab</li>
+<li>T203 – HOD Maths</li>
+<li>T204 – Staff Room Maths</li>
+<li>T205 – Staff Room Physics</li>
+<li>T206 – Physics Lab</li>
+</ul></td></tr>
+</table>
+
+<!-- ================= CIVIL BLOCK ================= -->
+<div class="section-subtitle">Civil Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+
+<tr><td>Cellar</td><td><ul class="details-list">
+<li>CVC001 – Museum</li>
+<li>CVC002 – Surveying Laboratory</li>
+</ul></td></tr>
+
+<tr><td>Ground Floor</td><td><ul class="details-list">
+<li>CV001 – Class Room</li>
+<li>CV002 – Class Room</li>
+<li>CV005 – Sir M Visvesvaraya Seminar Hall</li>
+<li>CV006 – HOD Chamber</li>
+<li>CV006A – Store Room</li>
+<li>CV007 – Staff Room</li>
+<li>CV008 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>CV101 – Class Room</li>
+<li>CV102A – UG Computer Lab I</li>
+<li>CV102B – UG Computer Lab II</li>
+<li>CV105 – Class Room</li>
+<li>CV106 – Staff Room</li>
+<li>CV106A – UPS Room</li>
+<li>CV107 – PG Computer Lab</li>
+<li>CV108 – Staff Room</li>
+<li>CV109 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>CV201 – Class Room</li>
+<li>CV202 – Class Room</li>
+<li>CV205 – Environmental & Research Lab</li>
+<li>CV206 – PG Class Room</li>
+<li>CV206A – Staff Room</li>
+<li>CV207 – PG Class Room</li>
+<li>CV208 – Staff Room</li>
+<li>CV209 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>Third Floor</td><td><ul class="details-list">
+<li>CV301 – Class Room</li>
+<li>CV302 – G S Sivanna Seminar Hall</li>
+<li>CV305 – Class Room</li>
+<li>CV306 – PG Class Room</li>
+<li>CV307 – PG Class Room</li>
+<li>CV308 – Staff Room</li>
+<li>CV309 – Staff Room</li>
+</ul></td></tr>
+</table>
+
+<!-- ================= MECHANICAL BLOCK ================= -->
+<div class="section-subtitle">Mechanical Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+
+<tr><td>Ground Floor</td><td><ul class="details-list">
+<li>M001 – Seminar Hall</li>
+<li>M002 – Metrology Lab</li>
+<li>M003 – Gents Washroom</li>
+<li>M004 – Ladies Washroom</li>
+<li>M006 – Class Room</li>
+<li>M007 – Class Room</li>
+<li>M008 – Staff Room</li>
+<li>M009 – A.P.J Abdul Kalam Seminar Hall</li>
+</ul></td></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>M101 – Raja Ramanna Hall</li>
+<li>M102 – CAE Lab</li>
+<li>M103 – Gents Toilet</li>
+<li>M104 – Ladies Toilet</li>
+<li>M105 – Staff Room</li>
+<li>M107 – Class Room</li>
+<li>M108 – Class Room</li>
+<li>M109 – Staff Room</li>
+<li>M110 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>M201 – Class Room</li>
+<li>M202 – CAD Lab</li>
+<li>M203 – Gents Toilet</li>
+<li>M204 – Ladies Toilet</li>
+<li>M205 – Staff Room</li>
+<li>M206 – Staff Room (Dept Library)</li>
+<li>M207 – Class Room</li>
+<li>M208 – Class Room</li>
+<li>M209 – Staff Room</li>
+<li>M210 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>Third Floor</td><td><ul class="details-list">
+<li>M301 – Class Room</li>
+<li>M301A – Staff Room</li>
+<li>M303 – Gents Toilet</li>
+<li>M304 – Ladies Toilet</li>
+<li>M305 – Linux Lab</li>
+<li>M306 – Class Room</li>
+<li>M307 – Class Room</li>
+<li>M308 – MCA Staff Room</li>
+<li>M309 – Staff Room</li>
+</ul></td></tr>
+</table>
+
+<!-- ================= EEE BLOCK ================= -->
+<div class="section-subtitle">Electrical & Electronics Block</div>
+<table>
+<tr><th>Floor</th><th>Rooms</th></tr>
+
+<tr><td>Ground Floor</td><td><ul class="details-list">
+<li>EE001 – Staff Room</li>
+<li>EE002 – Seminar Hall</li>
+<li>EE003 – Gents Toilet</li>
+<li>EE004 – Ladies Toilet</li>
+<li>EE005 – Class Room</li>
+<li>EE006 – Class Room</li>
+<li>EE007 – Staff Room</li>
+<li>EE010 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>First Floor</td><td><ul class="details-list">
+<li>EE101 – Staff Room</li>
+<li>EE103 – Ladies Toilet</li>
+<li>EE104 – Gents Toilet</li>
+<li>EE105 – Electronics Lab</li>
+<li>EE007 – Class Room</li>
+<li>EE008 – Class Room</li>
+<li>EE010 – Department Library</li>
+</ul></td></tr>
+
+<tr><td>Second Floor</td><td><ul class="details-list">
+<li>EE201 – Staff Room</li>
+<li>EE202 – Class Room</li>
+<li>EE203 – Gents Toilet</li>
+<li>EE204 – Ladies Toilet</li>
+<li>EE205 – Class Room</li>
+<li>EE206 – Class Room</li>
+<li>EE207 – Staff Room</li>
+<li>EE209 – Class Room</li>
+<li>EE210 – Staff Room</li>
+</ul></td></tr>
+
+<tr><td>Third Floor</td><td><ul class="details-list">
+<li>EE301 – Staff Room</li>
+<li>EE302 – Srinivasa Ramanujan Hall</li>
+<li>EE303 – Gents Toilet</li>
+<li>EE304 – Ladies Toilet</li>
+<li>EE305 – Class Room</li>
+<li>EE306 – Class Room</li>
+<li>EE307 – Staff Room</li>
+<li>EE309 – Staff Room</li>
+<li>EE310 – Staff Room</li>
+</ul></td></tr>
+</table>
+
+</section>
+
+<footer>
+<p>© 2025 Bapuji Institute of Engineering and Technology</p>
+</footer>
+
+<script>
+function searchRooms() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.querySelectorAll(".details-list li");
+
+    items.forEach(item => {
+        if (input && item.textContent.toLowerCase().includes(input)) {
+            item.classList.add("highlight");
+            item.style.display = "";
+        } else {
+            item.classList.remove("highlight");
+            item.style.display = input ? "none" : "";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

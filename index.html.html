@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bapuji Institute of Engineering and Technology</title>
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+header h1 {
+    margin-bottom: 10px;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #00bcd4;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(to bottom, #0066cc, #7ba9d7);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* CONTENT */
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.content h3 {
+    color: #004080;
+    margin-bottom: 15px;
+}
+
+/* NAVIGATION SECTION */
+.navigator-section {
+    padding: 50px 20px;
+    background: #eef4ff;
+    text-align: center;
+}
+.navigator-section h2 {
+    color: #004080;
+    margin-bottom: 10px;
+}
+.navigator-box {
+    background: white;
+    padding: 25px;
+    max-width: 650px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.navigator-box select {
+    padding: 10px;
+    width: 250px;
+    margin: 10px;
+}
+.navigator-box button {
+    padding: 10px 30px;
+    background: #004080;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.navigator-box button:hover {
+    background: #0066cc;
+}
+#directions {
+    margin-top: 20px;
+    text-align: left;
+    background: #f7fbff;
+    padding: 15px;
+    border-left: 6px solid #004080;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Bapuji Institute of Engineering and Technology</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="campus.html">College Campus</a>
+        <a href="map.html">Location</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Empowering Education for the Future</h2>
+    <p>Approved by AICTE | Autonomous | NAAC 'A'</p>
+</section>
+
+<section class="content">
+    <h3>Welcome to BIET</h3>
+    <p>
+        Bapuji Institute of Engineering and Technology provides quality education,
+        skilled faculty, and excellent infrastructure to empower students with
+        knowledge, skills, and values.
+    </p>
+</section>
+
+<!-- NAVIGATOR -->
+<section class="navigator-section">
+    <h2>You Are Here → Go There</h2>
+    <p>Select your current location and destination</p>
+
+    <div class="navigator-box">
+        <select id="from">
+            <option value="">From</option>
+            <option value="parking">Parking</option>
+            <option value="admin">Admin Block</option>
+            <option value="library">Library</option>
+            <option value="isbio">IS / Biotech / CSBS Block</option>
+            <option value="textile">Textile Block</option>
+            <option value="eee">EEE Block</option>
+            <option value="me">Mechanical Block</option>
+            <option value="civil">Civil Block</option>
+            <option value="canteen">Canteen</option>
+            <option value="cricket">Cricket Ground</option>
+        </select>
+
+        <select id="to">
+            <option value="">To</option>
+            <option value="parking">Parking</option>
+            <option value="admin">Admin Block</option>
+            <option value="library">Library</option>
+            <option value="isbio">IS / Biotech / CSBS Block</option>
+            <option value="textile">Textile Block</option>
+            <option value="eee">EEE Block</option>
+            <option value="me">Mechanical Block</option>
+            <option value="civil">Civil Block</option>
+            <option value="canteen">Canteen</option>
+            <option value="cricket">Cricket Ground</option>
+        </select>
+
+        <br>
+        <button onclick="getDirections()">Show Directions</button>
+
+        <div id="directions"></div>
+    </div>
+</section>
+
+<footer>
+    <p>© Bapuji Institute of Engineering and Technology</p>
+</footer>
+
+<script>
+function getDirections() {
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    const d = document.getElementById("directions");
+
+    if (!from || !to) {
+        d.innerHTML = "⚠️ Please select both locations.";
+        return;
+    }
+
+    if (from === to) {
+        d.innerHTML = "📍 You are already at the destination.";
+        return;
+    }
+
+    const routes = {
+        "parking-admin": "➡️ Walk straight from <b>Parking</b> to reach <b>Admin Block</b>.",
+        "parking-library": "➡️ From <b>Parking</b>, walk past Admin Block to reach <b>Library</b>.",
+        "parking-isbio": "➡️ Walk straight from <b>Parking</b> along the campus pathway to <b>IS / Biotech / CSBS Block</b>.",
+        "parking-textile": "➡️ Walk slightly right from <b>Parking</b> to reach <b>Textile Block</b>.",
+        "parking-eee": "➡️ Walk straight from <b>Parking</b>, pass Admin and Textile Blocks to reach <b>EEE Block</b>.",
+        "parking-me": "➡️ Walk straight past Admin, Textile, and EEE Blocks to reach <b>Mechanical Block</b>.",
+        "parking-civil": "➡️ Walk straight past Admin, Textile, EEE, and ME Blocks to reach <b>Civil Block</b>.",
+        "parking-canteen": "➡️ Walk past Admin Block and Library to reach <b>Canteen</b>.",
+        "parking-cricket": "➡️ Walk along the main path to reach <b>Cricket Ground</b>.",
+
+        "admin-parking": "➡️ Walk back towards the entrance to reach <b>Parking</b>.",
+        "admin-library": "➡️ Walk right from <b>Admin Block</b> to reach <b>Library</b>.",
+        "admin-isbio": "➡️ Walk straight from <b>Admin Block</b> to reach <b>IS / Biotech / CSBS Block</b>.",
+        "admin-textile": "➡️ Move slightly left from <b>Admin Block</b> to reach <b>Textile Block</b>.",
+        "admin-eee": "➡️ Walk straight from <b>Admin Block</b>, pass Textile Block to reach <b>EEE Block</b>.",
+        "admin-me": "➡️ Walk straight past EEE Block to reach <b>Mechanical Block</b>.",
+        "admin-civil": "➡️ Continue past ME Block to reach <b>Civil Block</b>.",
+        "admin-canteen": "➡️ Move past Library and Admin Block to reach <b>Canteen</b>.",
+        "admin-cricket": "➡️ Walk past EEE and Textile Blocks to reach <b>Cricket Ground</b>.",
+
+        "library-parking": "➡️ Walk back past Admin Block to reach <b>Parking</b>.",
+        "library-admin": "➡️ Walk left from <b>Library</b> to reach <b>Admin Block</b>.",
+        "library-isbio": "➡️ Walk straight from <b>Library</b> past Admin to reach <b>IS / Biotech / CSBS Block</b>.",
+        "library-textile": "➡️ Walk past Admin to reach <b>Textile Block</b>.",
+        "library-eee": "➡️ Move past Admin and Textile Blocks to reach <b>EEE Block</b>.",
+        "library-me": "➡️ Continue past EEE Block to reach <b>Mechanical Block</b>.",
+        "library-civil": "➡️ Continue past ME Block to reach <b>Civil Block</b>.",
+        "library-canteen": "➡️ Walk directly to <b>Canteen</b> from Library.",
+        "library-cricket": "➡️ Walk past Admin and Textile Blocks to reach <b>Cricket Ground</b>.",
+
+        "isbio-parking": "➡️ Walk back along main path to reach <b>Parking</b>.",
+        "isbio-admin": "➡️ Walk straight back to <b>Admin Block</b>.",
+        "isbio-library": "➡️ Walk past Admin Block to reach <b>Library</b>.",
+        "isbio-textile": "➡️ Walk left to reach <b>Textile Block</b>.",
+        "isbio-eee": "➡️ Walk right from <b>IS / Biotech Block</b> to reach <b>EEE Block</b>.",
+        "isbio-me": "➡️ Walk past EEE Block to reach <b>Mechanical Block</b>.",
+        "isbio-civil": "➡️ Walk past ME Block to reach <b>Civil Block</b>.",
+        "isbio-canteen": "➡️ Walk past Admin Block to reach <b>Canteen</b>.",
+        "isbio-cricket": "➡️ Walk past Textile and Admin Blocks to reach <b>Cricket Ground</b>.",
+
+        "textile-parking": "➡️ Walk left to reach <b>Parking</b>.",
+        "textile-admin": "➡️ Walk slightly right to reach <b>Admin Block</b>.",
+        "textile-library": "➡️ Walk straight to reach <b>Library</b>.",
+        "textile-isbio": "➡️ Walk right to reach <b>IS / Biotech / CSBS Block</b>.",
+        "textile-eee": "➡️ Walk straight to reach <b>EEE Block</b>.",
+        "textile-me": "➡️ Walk past EEE Block to reach <b>Mechanical Block</b>.",
+        "textile-civil": "➡️ Continue straight to reach <b>Civil Block</b>.",
+        "textile-canteen": "➡️ Walk past Library to reach <b>Canteen</b>.",
+        "textile-cricket": "➡️ Walk to the right to reach <b>Cricket Ground</b>.",
+
+        "eee-parking": "➡️ Walk back past Textile and Admin Blocks to reach <b>Parking</b>.",
+        "eee-admin": "➡️ Walk past Textile Block to reach <b>Admin Block</b>.",
+        "eee-library": "➡️ Walk left past Textile to reach <b>Library</b>.",
+        "eee-isbio": "➡️ Walk back left to reach <b>IS / Biotech / CSBS Block</b>.",
+        "eee-textile": "➡️ Walk left to reach <b>Textile Block</b>.",
+        "eee-me": "➡️ Walk straight to reach <b>Mechanical Block</b>.",
+        "eee-civil": "➡️ Continue straight to reach <b>Civil Block</b>.",
+        "eee-canteen": "➡️ Walk past Admin Block to reach <b>Canteen</b>.",
+        "eee-cricket": "➡️ Walk past Textile Block to reach <b>Cricket Ground</b>.",
+
+        "me-parking": "➡️ Walk back past EEE, Textile, and Admin Blocks to reach <b>Parking</b>.",
+        "me-admin": "➡️ Walk past EEE and Textile Blocks to reach <b>Admin Block</b>.",
+        "me-library": "➡️ Walk past EEE and Admin Blocks to reach <b>Library</b>.",
+        "me-isbio": "➡️ Walk past EEE Block to reach <b>IS / Biotech / CSBS Block</b>.",
+        "me-textile": "➡️ Walk past EEE Block to reach <b>Textile Block</b>.",
+        "me-eee": "➡️ Walk back left to reach <b>EEE Block</b>.",
+        "me-civil": "➡️ Continue straight to reach <b>Civil Block</b>.",
+        "me-canteen": "➡️ Walk past Admin and Library to reach <b>Canteen</b>.",
+        "me-cricket": "➡️ Walk past EEE and Textile Blocks to reach <b>Cricket Ground</b>.",
+
+        "civil-parking": "➡️ Walk back past ME, EEE, Textile, and Admin Blocks to reach <b>Parking</b>.",
+        "civil-admin": "➡️ Walk back past ME and EEE Blocks to reach <b>Admin Block</b>.",
+        "civil-library": "➡️ Walk back past ME, EEE, and Admin to reach <b>Library</b>.",
+        "civil-isbio": "➡️ Walk back past ME and EEE Blocks to reach <b>IS / Biotech / CSBS Block</b>.",
+        "civil-textile": "➡️ Walk left <b>Textile Block</b>.",
+        "civil-eee": "➡️ Walk right, beside civil, mechanical you will reach <b>EEE Block</b>.",
+        "civil-me": "➡️ Walk right, beside civil you will reach<b>Mechanical Block</b>.",
+        "civil-canteen": "➡️ Move slightly left to reach <b>Canteen</b>.",
+        "civil-cricket": "➡️ Walk past ME and Textile Blocks to reach <b>Cricket Ground</b>.",
+
+        "canteen-parking": "➡️ Walk back past Library and Admin Block to reach <b>Parking</b>.",
+        "canteen-admin": "➡️  Walk straight untill you reach foot ball ground after then turn right side and then left after library you will reach <b>Admin Block</b>.",
+        "canteen-library": "➡️  Walk straight untill you reach foot ball ground after then turn right side and then left <b>Library</b>.",
+        "canteen-isbio": "➡️ walk right straight, at left side beside textile block you will get <b>IS / Biotech / CSBS Block</b>.",
+        "canteen-textile": "➡️ walk right straight at left you will get  <b>Textile Block</b>.",
+        "canteen-eee": "➡️ walk right and again turn right, beside civil block and mechanical block you will<b>EEE Block</b>.",
+        "canteen-me": "➡️ Walk right and again turn right, beside civil block you will reach <b>Mechanical Block</b>.",
+        "canteen-civil": "➡️ Walk right and again turn right to reach <b>Civil Block</b>.",
+        "canteen-cricket": "➡️ Walk left to reach <b>Cricket Ground</b>.",
+
+        "cricket-parking": "➡️Walk straight untill you reach foot ball ground after that beside is block you will get <b>Parking</b>.",
+        "cricket-admin": "➡️ Walk straight untill you reach foot ball ground after then turn right side and then left after library you will directly enter to <b>Admin Block</b>.",
+        "cricket-library": "➡️ Walk straight untill you reach foot ball ground after then turn right side and then left <b>Library</b>.",
+        "cricket-isbio": "➡️ Walk straight after canteen walk straight further at left side beside textile block you will get <b>IS / Biotech / CSBS Block</b>.",
+        "cricket-textile": "➡️ Walk straight after canteen walk straight, further at left side you will get <b>Textile Block</b>.",
+        "cricket-eee": "➡️ Walk straight, and after passing from canteen turn right \n -beside of civil block , mechanical block you will get  <b>EEE Block</b>.",
+        "cricket-me": "➡️ Walk straight, and after passing from canteen turn right \n -beside of civil block you will get <b>Mechanical Block</b>.",
+        "cricket-civil": "➡️ Walk straight, and after passing from canteen turn right <b>Civil Block</b>.",
+        "cricket-canteen": "➡️ Walk back past Textile and Admin Blocks to reach  <b>Canteen</b>."
+    };
+
+    const key = from + "-" + to;
+    const reverseKey = to + "-" + from;
+
+    d.innerHTML = routes[key] || routes[reverseKey] ||
+        "➡️ Follow the campus pathway using nearby buildings as landmarks.";
+}
+</script>
+
+</body>
+</html>
